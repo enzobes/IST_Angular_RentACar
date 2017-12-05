@@ -11,7 +11,8 @@ import { CarService } from '../car.service';
   templateUrl: './car-detail.component.html'
 })
 export class CarDetailComponent implements OnInit {
-
+  title = 'Selected Car';
+  
   car: Car;
 
   constructor(

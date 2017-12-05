@@ -11,12 +11,12 @@ export class CarService {
 
   getCars(): Promise<Car[]> {
       const cars = new Promise(fulfill => {
-        this.http.get('http://localhost:8080/voiture/1').subscribe(data => {
+        this.http.get('http://localhost:8080/voiture').subscribe(data => {
           fulfill(data);
         });
       });
-       return Promise.resolve(cars);
-     }
+    return Promise.resolve(cars);
+  }
 
   getCar(id: number): Promise<Car> {
       const car = new Promise(fulfill => {
@@ -25,14 +25,33 @@ export class CarService {
         });
       });
 
-      return Promise.resolve(car);
-    }
-  rent(car) {
-    car.rented = true;
+    return Promise.resolve(car);
   }
 
-  getBack(car) {
-    car.rented = false;
+  rent(voiture) {
+    
+  const req = this.http.post('http://localhost:8080/louer/'+voiture.id, {
+      location: 'true'
+    }) .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
   }
 
+  getBack(voiture) {
+      const req = this.http.post('http://localhost:8080/retourner/'+voiture.id, {
+      location: 'false'
+    }) .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+  }
 }

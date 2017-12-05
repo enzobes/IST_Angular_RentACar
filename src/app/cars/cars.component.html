@@ -26,7 +26,7 @@
                 <tr *ngFor="let car of cars" (click)="onSelect(car)">
                     <td>{{car.id}}</td>
                     <td>{{car.plateNumber}}</td>
-                    <td>{{car.model}}</td>
+                    <td>{{car.marque}}</td>
                     <td>
                       <span class="icon" style="color: #00d74e; margin-left:15px;"*ngIf="!car.rented"><i class="fa fa-check" aria-hidden="true"></i></span>
                       <span class="icon" style="color: #ff252d; margin-left:15px;" *ngIf="car.rented"><i class="fa fa-times" aria-hidden="true"></i></span>
