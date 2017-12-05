@@ -10,14 +10,23 @@ export class CarService {
   constructor(private http: HttpClient) {}
 
   getCars(): Promise<Car[]> {
-    return Promise.resolve(CARS);
-  }
+      const cars = new Promise(fulfill => {
+        this.http.get('http://localhost:8080/projetWeb/cars/unRent').subscribe(data => {
+          fulfill(data);
+        });
+      });
+       return Promise.resolve(cars);
+     }
 
   getCar(id: number): Promise<Car> {
-    /** update this method with this.http.get... see https://angular.io/guide/http) **/
-    return Promise.resolve(CARS[id]);
-  }
+      const car = new Promise(fulfill => {
+        this.http.get('http://localhost:8080/projetWeb/cars/'+id).subscribe(data => {
+          fulfill(data);
+        });
+      });
 
+      return Promise.resolve(car);
+    }
   rent(car) {
     car.rented = true;
   }

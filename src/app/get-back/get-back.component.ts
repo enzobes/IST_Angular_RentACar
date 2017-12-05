@@ -10,6 +10,7 @@ import { CarService } from '../car.service';
 })
 export class GetBackComponent implements OnInit {
   selectedCar: Car;
+  title = 'Get Back Car';
 
   cars;
   constructor(
