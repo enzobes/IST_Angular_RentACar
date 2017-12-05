@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Car } from './car';
-import { CARS } from './mock-cars';
+//import { CARS } from './mock-cars';
 
 @Injectable()
 export class CarService {
@@ -11,7 +11,7 @@ export class CarService {
 
   getCars(): Promise<Car[]> {
       const cars = new Promise(fulfill => {
-        this.http.get('http://localhost:8080/projetWeb/cars/unRent').subscribe(data => {
+        this.http.get('http://localhost:8080/voiture/1').subscribe(data => {
           fulfill(data);
         });
       });
@@ -20,7 +20,7 @@ export class CarService {
 
   getCar(id: number): Promise<Car> {
       const car = new Promise(fulfill => {
-        this.http.get('http://localhost:8080/projetWeb/cars/'+id).subscribe(data => {
+        this.http.get('http://localhost:8080/voiture/'+id).subscribe(data => {
           fulfill(data);
         });
       });
