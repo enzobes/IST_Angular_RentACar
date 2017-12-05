@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+
+<div *ngIf="car">
+  <div class="card">
+      <div class="card-header">
+          <p class="card-header-title">Voiture Sélectionnée :</p>
+      </div>
+      <div class="card-content">
+          <div class="content">
+              <p><strong>ID:</strong> {{car.id}}</p>
+              <p><strong>Plate number:</strong> {{car.plateNumber}}</p>
+              <p><strong>Marque:</strong> {{car.model}}</p>
+              <p><strong>Rented:</strong>
+                <span class="icon" style="color: #00d74e;" *ngIf="!car.rented"><i class="fa fa-check"aria-hidden="true"></i></span>
+                <span class="icon" style="color: #ff252d;" *ngIf="car.rented"><i class="fa fa-times"aria-hidden="true"></i></span>
+              </p>
+          </div>
+
+          <a class="button is-link" (click)="rent(car)">Rent it !</a>
+          <a class="button is-link" (click)="cancelRental(car)">Cancel rental</a>
+          <a class="button is-link" (click)="goBack()">Return to the main menu</a>
+
+    </div>
+  </div>
+</div>
