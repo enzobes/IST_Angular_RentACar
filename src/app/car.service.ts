@@ -44,7 +44,8 @@ export class CarService {
 
   getBack(voiture) {
       const req = this.http.post('http://localhost:8080/retourner/'+voiture.id, {
-      location: 'false'
+      location: 'true'
+      
     }) .subscribe(
         res => {
           console.log(res);

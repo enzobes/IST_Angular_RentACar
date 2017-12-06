@@ -31,6 +31,7 @@ export class GetBackComponent implements OnInit {
   }
   cancelRental(car): void {
     this.carService.getBack(car);
+    window.location.reload();    
     this.selectedCar = undefined;
   }
 
