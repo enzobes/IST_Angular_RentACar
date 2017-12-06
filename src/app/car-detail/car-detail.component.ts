@@ -2,7 +2,8 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { NgForm } from '@angular/forms';
+import { NgModel } from '@angular/forms';
 import { Car } from '../car';
 import { CarService } from '../car.service';
 
@@ -27,8 +28,8 @@ export class CarDetailComponent implements OnInit {
       .subscribe(car => this.car = car);
   }
 
-  rent(car): void {
-    this.carService.rent(car);
+  rent(car,client): void {
+    this.carService.rent(car,client);
   }
 
   cancelRental(car): void {
@@ -37,5 +38,8 @@ export class CarDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+  onSubmit(form: NgForm){
+    console.log(form.value);
   }
 }

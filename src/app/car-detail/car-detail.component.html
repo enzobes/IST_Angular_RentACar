@@ -6,6 +6,38 @@
     </div>
 </div><br/>
 <div *ngIf="car">
+
+        
+        <div class="column is-one-third">
+                <div class="card">
+                <div class="card-content">
+                    <form *ngIf="car.client;else other_block" >
+                
+                        <div class="field">
+                            <label class="label">Firstname :
+                            </label>
+                            <div class="control has-icons-right">
+                                <input class="input" type="text" [(ngModel)]="car.client.firstName" [ngModelOptions]="{standalone: true}" >
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Lastname :
+                            </label>
+                            <div class="control has-icons-right">
+                                <input class="input" type="text" [(ngModel)]="car.client.lastName" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            
+                        </div>
+                        <div class="control">
+                                <button type="submit" class="button is-success"
+                                (click)="rent(car, car.client)">Rent
+                                </button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                </div>
+                
   <div class="card">
       <div class="card-header">
           <p class="card-header-title">Selected Car :</p>
@@ -14,14 +46,17 @@
           <div class="content">
               <p><strong>ID:</strong> {{car.id}}</p>
               <p><strong>Plate number:</strong> {{car.plateNumber}}</p>
-              <p><strong>Marque:</strong> {{car.model}}</p>
+              <p><strong>Marque:</strong> {{car.marque}}</p>
               <p><strong>Rented:</strong>
                 <span class="icon" style="color: #00d74e;" *ngIf="!car.rented"><i class="fa fa-check"aria-hidden="true"></i></span>
                 <span class="icon" style="color: #ff252d;" *ngIf="car.rented"><i class="fa fa-times"aria-hidden="true"></i></span>
               </p>
+              <ng-template #other_block><p style="color:red">Voiture non loué <br/>Inserer un client via Postman</p></ng-template>
+              
+              <p><strong>Client:</strong> {{car.client.firstName}} {{car.client.lastName}} </p>
+              
           </div>
 
-          <a class="button is-link" (click)="rent(car)">Rent it !</a>
           <a class="button is-link" (click)="cancelRental(car)">Cancel rental</a>
           <a class="button is-link" (click)="goBack()">Return to the main menu</a>
 
