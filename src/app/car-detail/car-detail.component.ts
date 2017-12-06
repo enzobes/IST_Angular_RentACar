@@ -34,6 +34,7 @@ export class CarDetailComponent implements OnInit {
 
   cancelRental(car): void {
     this.carService.getBack(car);
+    window.location.reload();
   }
 
   goBack(): void {

@@ -48,8 +48,8 @@
               <p><strong>Plate number:</strong> {{car.plateNumber}}</p>
               <p><strong>Marque:</strong> {{car.marque}}</p>
               <p><strong>Rented:</strong>
-                <span class="icon" style="color: #00d74e;" *ngIf="!car.rented"><i class="fa fa-check"aria-hidden="true"></i></span>
-                <span class="icon" style="color: #ff252d;" *ngIf="car.rented"><i class="fa fa-times"aria-hidden="true"></i></span>
+                <span class="icon" style="color: #00d74e;" *ngIf="car.client"><i class="fa fa-check"aria-hidden="true"></i></span>
+                <span class="icon" style="color: #ff252d;" *ngIf="!car.client"><i class="fa fa-times"aria-hidden="true"></i></span>
               </p>
               <ng-template #other_block><p style="color:red">Voiture non loué <br/>Inserer un client via Postman</p></ng-template>
               

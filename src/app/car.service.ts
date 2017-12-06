@@ -28,29 +28,30 @@ export class CarService {
     return Promise.resolve(car);
   }
 
-  rent(voiture, client) {
-   const req = this.http.put('http://localhost:8080/louer/'+voiture.id, {
+  rent(car, client) {
+   const uri = this.http.put('http://localhost:8080/louer/'+car.id, {
       location: 'true',
     }) .subscribe(
         res => {
           console.log(res);
         },
         err => {
-          console.log("Error occured:"+err);
+          console.log("error:"+JSON.stringify(err));
         }
       );
+    
   }
  
 
-  getBack(voiture) {
-      const req = this.http.post('http://localhost:8080/retourner/'+voiture.id, {
-      location: 'false'
+  getBack(car) {
+      const uri = this.http.post('http://localhost:8080/retourner/'+car.id, {
+      location: 'true'
     }) .subscribe(
         res => {
           console.log(res);
         },
         err => {
-          console.log("Error occured:"+JSON.stringify(err));
+          console.log("error:"+JSON.stringify(err));
         }
       );
   }
