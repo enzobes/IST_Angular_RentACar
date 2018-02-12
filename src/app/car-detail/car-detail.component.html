@@ -1,65 +1,69 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
 <div class="hero is-info">
     <div class="hero-body content">
         <h1 class="title">{{title}}</h1>
     </div>
 </div><br/>
 <div *ngIf="car">
+  <div class="section">
+    <div class="columns">
+      <div class="column is-one-third">
+              <div class="card">
+              <div class="card-content">
+                {{diagnostic}}
+                <form>
+                <!-- <form *ngIf="car.client;else other_block" > -->
 
-        
-        <div class="column is-one-third">
-                <div class="card">
-                <div class="card-content">
-                    <form *ngIf="car.client;else other_block" >
-                
-                        <div class="field">
-                            <label class="label">Firstname :
-                            </label>
-                            <div class="control has-icons-right">
-                                <input class="input" type="text" [(ngModel)]="car.client.firstName" [ngModelOptions]="{standalone: true}" >
-                            </div>
+                    <div class="field">
+                        <label class="label">Firstname :
+                        </label>
+                        <div class="control has-icons-right">
+                            <input class="input" type="text" #firstName>
                         </div>
-                        <div class="field">
-                            <label class="label">Lastname :
-                            </label>
-                            <div class="control has-icons-right">
-                                <input class="input" type="text" [(ngModel)]="car.client.lastName" [ngModelOptions]="{standalone: true}">
-                            </div>
-                            
+                    </div>
+                    <div class="field">
+                        <label class="label">Lastname :
+                        </label>
+                        <div class="control has-icons-right">
+                            <input class="input" type="text" #lastName>
                         </div>
-                        <div class="control">
-                                <button type="submit" class="button is-success"
-                                (click)="rent(car, car.client)">Rent
-                                </button>
-                        </div>
-                    </form>
-                </div>
-                </div>
-                </div>
-                
-  <div class="card">
-      <div class="card-header">
-          <p class="card-header-title">Selected Car :</p>
+
+                    </div>
+                    <div class="control">
+                            <button type="submit" class="button is-success"
+                            (click)="rent(car, firstName.value, lastName.value)">Rent
+                            </button>
+                    </div>
+                </form>
+              </div>
+              </div>
+              </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card">
+        <div class="card-header">
+            <p class="card-header-title">Selected Car :</p>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <p><strong>ID:</strong> {{car.id}}</p>
+                <p><strong>Plate number:</strong> {{car.plateNumber}}</p>
+                <p><strong>Marque:</strong> {{car.marque}}</p>
+                <p><strong>Rented:</strong>
+                  <span class="icon" style="color: #00d74e;" *ngIf="car.client"><i class="fa fa-check"aria-hidden="true"></i></span>
+                  <span class="icon" style="color: #ff252d;" *ngIf="!car.client"><i class="fa fa-times"aria-hidden="true"></i></span>
+                </p>
+                <!-- <ng-template #other_block><p style="color:red">Voiture non loué <br/>Inserer un client via Postman</p></ng-template> -->
+
+                <p *ngIf="car.client"><strong>Client:</strong> {{car.client.firstName}} {{car.client.lastName}} </p>
+
+            </div>
+
+            <a class="button is-link" (click)="cancelRental(car)">Cancel rental</a>
+            <a class="button is-link" (click)="goBack()">Return to the main menu</a>
+
       </div>
-      <div class="card-content">
-          <div class="content">
-              <p><strong>ID:</strong> {{car.id}}</p>
-              <p><strong>Plate number:</strong> {{car.plateNumber}}</p>
-              <p><strong>Marque:</strong> {{car.marque}}</p>
-              <p><strong>Rented:</strong>
-                <span class="icon" style="color: #00d74e;" *ngIf="car.client"><i class="fa fa-check"aria-hidden="true"></i></span>
-                <span class="icon" style="color: #ff252d;" *ngIf="!car.client"><i class="fa fa-times"aria-hidden="true"></i></span>
-              </p>
-              <ng-template #other_block><p style="color:red">Voiture non loué <br/>Inserer un client via Postman</p></ng-template>
-              
-              <p><strong>Client:</strong> {{car.client.firstName}} {{car.client.lastName}} </p>
-              
-          </div>
-
-          <a class="button is-link" (click)="cancelRental(car)">Cancel rental</a>
-          <a class="button is-link" (click)="goBack()">Return to the main menu</a>
-
     </div>
   </div>
 </div>

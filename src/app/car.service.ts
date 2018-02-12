@@ -29,9 +29,11 @@ export class CarService {
   }
 
   rent(car, client) {
-   const uri = this.http.put('http://localhost:8080/louer/'+car.id, {
-      location: 'true',
-    }) .subscribe(
+    const body = {
+      firstName: client.firstName,
+      lastName: client.lastName
+    }
+   const uri = this.http.put('http://localhost:8080/louer/'+car.id, body) .subscribe(
         res => {
           console.log(res);
         },
@@ -39,9 +41,9 @@ export class CarService {
           console.log("error:"+JSON.stringify(err));
         }
       );
-    
+
   }
- 
+
 
   getBack(car) {
       const uri = this.http.post('http://localhost:8080/retourner/'+car.id, {
