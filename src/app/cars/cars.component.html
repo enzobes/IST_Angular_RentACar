@@ -39,7 +39,7 @@
     <div *ngIf="selectedCar">
         <div class="hero is-dark">
             <div class="hero-body content">
-                <h1 class="title is-4">You have selected this car : {{selectedCar.model | uppercase}}</h1>
+                <h1 class="title is-4">You have selected this car : {{selectedCar.marque | uppercase}} | {{selectedCar.plateNumber | uppercase}}</h1>
                 <a (click)="gotoDetail()" class="button">Go to the Next Step &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 
             </div>
