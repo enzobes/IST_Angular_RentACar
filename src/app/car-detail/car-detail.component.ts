@@ -41,10 +41,13 @@ export class CarDetailComponent implements OnInit {
     console.log(client);
     this.carService.rent(car,client);
     this.router.navigate(['/cars']);
+    location.reload();
+  
   }
 
   cancelRental(car): void {
     this.carService.getBack(car);
+    location.reload();
   }
 
   goBack(): void {
